@@ -1,0 +1,36 @@
+body {
+    padding: 20px
+}
+
+.jumbotron{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-img-top{
+    height: 150px;
+}
+
+.submit_btn{
+    width: 100%;
+}
+
+.wishlist{
+text-align: center;
+}
+
+.destination_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+.button_container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
