@@ -14,7 +14,7 @@ function displayDest(data) {
 
 function createCard(ele) {
   let singleCard = `
-        <div class="card" style="width: 15rem; margin: 20px;">
+        <div class="card" id=${ele.uid} style="width: 15rem; margin: 20px;">
             <img class="card-img-top" src=${ele.photo}>
             <div class="card-body">
                 <h5 class="card-title">${ele.name}</h5>
@@ -38,15 +38,15 @@ function createDestination(event) {
   event.preventDefault();
 
   const userData = {
-    'name': document.getElementById("destination_name").value,
-    'location': document.getElementById("destination_location").value,
-    'description': document.getElementById("description").value,
+    name: document.getElementById("destination_name").value,
+    location: document.getElementById("destination_location").value,
+    description: document.getElementById("description").value,
   };
 
   fetch(API, {
     method: "POST",
     //MUST match the data type body is sending
-    headers: {"Content-Type": "application/json",},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
   })
     .then((res) => res.json())
@@ -56,12 +56,34 @@ function createDestination(event) {
     });
 }
 
-async function editDestinaton(event) {
+document
+  .querySelector(".destination_container")
+  .addEventListener("click", editDestinaton);
 
-  const updatedName = prompt("What is you new place?");
+function editDestinaton(event) {
+  if (event.target.innerText === "Edit") {
+    const uid = event.target.parentNode.parentNode.parentNode.id;
+    const updatedName = prompt("What is you new place?");
+    const uopdatedLocation = prompt("where is the next Stop?");
+    const updatedDescription = prompt("Your new description for the next trip");
 
-  const uopdatedLocation = prompt("where is the next Stop?");
+    const userData = {
+      uid: uid,
+      name: updatedName,
+      location: uopdatedLocation,
+      description: updatedDescription,
+    };
 
-  const updatedDescription = prompt("Your new description for the next trip");
-
+    fetch(API, {
+      method: "PUT",
+      //MUST match the data type body is sending
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        displayDest(data);
+        console.log(data);
+      });
+  }
 }
