@@ -54,14 +54,17 @@ document
 function handleButtons(event) {
 
   const uid = event.target.parentNode.parentNode.parentNode.id;
+  const oldName = event.target.parentNode.parentNode.children[0].innerText;
+  const oldLocation = event.target.parentNode.parentNode.children[1].innerText;
+  const oldDescription = event.target.parentNode.parentNode.children[2].innerText;
 
   if (event.target.innerText === "Edit"){
 
     const userData = {
       uid: uid,
-      name: prompt("What is you new place?"),
-      location: prompt("where is the next Stop?"),
-      description: prompt("Your new description for the next trip"),
+      name: prompt("What is you new place?")|| oldName,
+      location: prompt("where is the next Stop?")|| oldLocation,
+      description: prompt("Your new description for the next trip")||oldDescription
     };
     renderPage(userData,"PUT");
   }
