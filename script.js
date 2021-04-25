@@ -81,7 +81,7 @@ function renderPage(info,method){
     .then((res) => res.json())
     .then((data) => {
       displayDest(data);
-      console.log(data);
+      //console.log(data);
     });
 }
 
