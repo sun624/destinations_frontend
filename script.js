@@ -38,19 +38,30 @@ function createDestination(event) {
   event.preventDefault();
 
   const userData = {
-    name: event.target["destination_name"].value,
-    location: event.target["destination_location"].value,
-    description: event.target["description"].value,
+    'name': document.getElementById("destination_name").value,
+    'location': document.getElementById("destination_location").value,
+    'description': document.getElementById("description").value,
   };
 
   fetch(API, {
     method: "POST",
-    body: new URLSearchParams(userData),
+    //MUST match the data type body is sending
+    headers: {"Content-Type": "application/json",},
+    body: JSON.stringify(userData),
   })
     .then((res) => res.json())
     .then((data) => {
-      document.querySelector(".destination_container").innerHTML += createCard(
-        data
-      );
+      displayDest(data);
+      console.log(data);
     });
+}
+
+async function editDestinaton(event) {
+
+  const updatedName = prompt("What is you new place?");
+
+  const uopdatedLocation = prompt("where is the next Stop?");
+
+  const updatedDescription = prompt("Your new description for the next trip");
+
 }
