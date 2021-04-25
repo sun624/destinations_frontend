@@ -1,52 +1,80 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Destination WishList</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Destination WishList</title>
 
-        <link rel="stylesheet" href="./style.css">
-        <script src="./script.js" defer></script>
-    </head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
 
-    <body>
-        <div class="jumbotron">
-            <h1 class="display-4">Vacation Destinations WishList</h1>
-            <p class="lead">Found exciting places to visition on your next vacation? Use the form below to add them to your wishlist</p>
-            <hr class="my-4">
-        </div>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+  </head>
 
-        <div class="row">
-            <div class="col-md-3">
-                 <form id = "userForm"  method="POST">
-                    <div class="form-group">
-                        <label for="name">Destination name</label>
-                        <input required type="text" class="form-control" id="destination_name" name="name" placeholder="Enter the name of the location">
-                    </div>
+  <body>
+    <div class="jumbotron">
+      <h1 class="display-4">Vacation Destinations WishList</h1>
+      <p class="lead">
+        Found exciting places to visition on your next vacation? Use the form
+        below to add them to your wishlist
+      </p>
+      <hr class="my-4" />
+    </div>
 
-                    <div class="form-group">
-                        <label for="location">Location</label>
-                        <input type="text" class="form-control" id="destination_location" name="location" placeholder="Where is the location">
-                    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <form id="userForm" method="POST">
+          <div class="form-group">
+            <label for="name">Destination name</label>
+            <input
+              required
+              type="text"
+              class="form-control"
+              id="destination_name"
+              name="name"
+              placeholder="Enter the name of the location"
+            />
+          </div>
 
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea type="text" class="form-control" id="description" name="description" rows="3"></textarea>
-                    </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input
+              type="text"
+              class="form-control"
+              id="destination_location"
+              name="location"
+              placeholder="Where is the location"
+            />
+          </div>
 
-                    <button type="submit" class="btn btn-primary submit_btn" id="addList" >Add to list</button>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              class="form-control"
+              id="description"
+              name="description"
+              rows="3"
+            ></textarea>
+          </div>
 
-                 </form>
-            </div>
+          <button type="submit" class="btn btn-primary submit_btn" id="addList">
+            Add to list
+          </button>
+        </form>
+      </div>
 
-            <div class="col-md-9">
-             <h4 class = "wishlist">My wishlist</h4>  
-             <div class = "destination_container">
-                 
-             </div> 
-
-            </div>
-        </div>
-        
-    </body>
+      <div class="col-md-9">
+        <h4 class="wishlist">My wishlist</h4>
+        <div class="destination_container"></div>
+      </div>
+    </div>
+  </body>
 </html>

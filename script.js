@@ -43,47 +43,41 @@ function createDestination(event) {
     description: document.getElementById("description").value,
   };
 
+  renderPage(userData,"POST");
+  document.getElementsById("userForm").reset();
+}
+
+document
+  .querySelector(".destination_container")
+  .addEventListener("click", handleButtons);
+
+function handleButtons(event) {
+
+  const uid = event.target.parentNode.parentNode.parentNode.id;
+
+  if (event.target.innerText === "Edit"){
+
+    const userData = {
+      uid: uid,
+      name: prompt("What is you new place?"),
+      location: prompt("where is the next Stop?"),
+      description: prompt("Your new description for the next trip"),
+    };
+    renderPage(userData,"PUT");
+  }
+  if (event.target.innerText === "Remove") renderPage({uid},"DELETE");
+}
+
+function renderPage(info,method){
   fetch(API, {
-    method: "POST",
+    method: method,
     //MUST match the data type body is sending
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(userData),
+    body: JSON.stringify(info),
   })
     .then((res) => res.json())
     .then((data) => {
       displayDest(data);
       console.log(data);
     });
-}
-
-document
-  .querySelector(".destination_container")
-  .addEventListener("click", editDestinaton);
-
-function editDestinaton(event) {
-  if (event.target.innerText === "Edit") {
-    const uid = event.target.parentNode.parentNode.parentNode.id;
-    const updatedName = prompt("What is you new place?");
-    const uopdatedLocation = prompt("where is the next Stop?");
-    const updatedDescription = prompt("Your new description for the next trip");
-
-    const userData = {
-      uid: uid,
-      name: updatedName,
-      location: uopdatedLocation,
-      description: updatedDescription,
-    };
-
-    fetch(API, {
-      method: "PUT",
-      //MUST match the data type body is sending
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        displayDest(data);
-        console.log(data);
-      });
-  }
 }
