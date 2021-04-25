@@ -44,7 +44,7 @@ function createDestination(event) {
   };
 
   renderPage(userData,"POST");
-  document.getElementsById("userForm").reset();
+  resetForm();
 }
 
 document
@@ -80,4 +80,10 @@ function renderPage(info,method){
       displayDest(data);
       console.log(data);
     });
+}
+
+function resetForm(){
+  document.getElementById("destination_name").value='';
+  document.getElementById("destination_location").value = "";
+  document.getElementById("description").value = "";
 }
